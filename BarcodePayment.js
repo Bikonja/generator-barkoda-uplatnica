@@ -1,3 +1,7 @@
+/**
+ * BarcodeGenerator - 2D Barcode generator for Croatian payment(LGPLv3)
+ * version: 0.5
+ */
 BarcodePayment = new function() {
 	var _me = this;
 	
@@ -156,7 +160,7 @@ BarcodePayment = new function() {
 			result |= BarcodePayment.ValidationResult.IBANInvalid;
 		}
 		
-		if (_settings.ValidateIBAN && !StringNotDefinedOrEmpty(paymentParams.IBAN) && _me.IsIBANValid(paymentParams.IBAN)) {
+		if (_settings.ValidateIBAN && !StringNotDefinedOrEmpty(paymentParams.IBAN) && !_me.IsIBANValid(paymentParams.IBAN)) {
 			result |= BarcodePayment.ValidationResult.IBANInvalid;
 		}
 		
@@ -170,7 +174,7 @@ BarcodePayment = new function() {
 			result |= BarcodePayment.ValidationResult.PaymentModelInvalid;
 		}
 		
-		if (!StringNotDefinedOrEmpty(paymentParams.ModelPlacanja) && _me.IsPaymentModelValid(paymentParams.ModelPlacanja)) {
+		if (!StringNotDefinedOrEmpty(paymentParams.ModelPlacanja) && !_me.IsPaymentModelValid(paymentParams.ModelPlacanja)) {
 			result |= BarcodePayment.ValidationResult.PaymentModelInvalid;
 		}
 		
@@ -184,7 +188,7 @@ BarcodePayment = new function() {
 			result |= BarcodePayment.ValidationResult.CalloutNumberInvalid;
 		}
 		
-		if (!StringNotDefinedOrEmpty(paymentParams.PozivNaBroj) && _me.IsCalloutNumberValid(paymentParams.PozivNaBroj, paymentParams.ModelPlacanja)) {
+		if (!StringNotDefinedOrEmpty(paymentParams.PozivNaBroj) && !_me.IsCalloutNumberValid(paymentParams.PozivNaBroj, paymentParams.ModelPlacanja)) {
 			result |= BarcodePayment.ValidationResult.CalloutNumberInvalid;
 		}
 		
@@ -198,7 +202,7 @@ BarcodePayment = new function() {
 			result |= BarcodePayment.ValidationResult.IntentCodeInvalid;
 		}
 		
-		if (!StringNotDefinedOrEmpty(paymentParams.SifraNamjene) && _me.IsIntentCodeValid(paymentParams.SifraNamjene)) {
+		if (!StringNotDefinedOrEmpty(paymentParams.SifraNamjene) && !_me.IsIntentCodeValid(paymentParams.SifraNamjene)) {
 			result |= BarcodePayment.ValidationResult.IntentCodeInvalid;
 		}
 		
