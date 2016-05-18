@@ -7,9 +7,14 @@ Ovaj projekt se sastoji od library-a koji omogućuje jednostavno prikupljanje, p
 
 Sve je potpuno besplatno i slobodno se koristi u komercijalne svrhe jer je pod licencom LGPL.
 
+# Primjer korištenja
+Za primjer korištenja možete otvoriti stranicu https://bikonja.github.io/generator-barkoda-uplatnica/ i pogledati kako je napravljena.
+
+**NAPOMENA**: Neke stvari još nisu implementirane u stranici za primjer korištenja (vidi poglavlje [Stvari koje još nisu implementirane](#stvari-koje-još-nisu-implementirane)).
+
 # Stvari koje još nisu implementirane
-* Validacija modela plaćanja (pri kraju)
-* Validacija šifre namjene (pri kraju)
-* Stranica za primjer korištenja (napravljen vrlo osnovni primjer, no potrebno je još dodati barem validacije, primjer se može vidjeti na adresi https://bikonja.github.io/generator-barkoda-uplatnica/)
+* Dokumentacija
+* Na stranici za primjer korištenja nije implementirano ispisivanje poruke o kakvoj se grešci radi (validacija)
+* Na stranici za primjer korištenja nije implementirano dinamičko postavljanje maksimalne duljine polja
 * Validacija poziva na broj u odnosu na označeni model plaćanja
 * Validacija IBAN-a
