@@ -7,7 +7,7 @@ BarcodePayment = new function() {
 	var _allowedCharacters = jQuery.merge(jQuery.merge([], _allowedSingleByteCharacters), _allowedTwoByteCharacters);
 	
 	var _priceFieldLength = 15;
-	var _pricePattern = "[0-9]+,[0-9]{2}";
+	var _pricePattern = "^[0-9]+,[0-9]{2}$";
 	
 	var _delimiter = String.fromCharCode(0x0A);
 	var _header = "HRVHUB30";
@@ -77,17 +77,17 @@ BarcodePayment = new function() {
 		var fieldLength = -1;
 
 		// Price
-		fieldLength = GetLength(paymentParams.Iznos);
+		fieldLength = _me.GetLength(paymentParams.Iznos);
 		if (fieldLength > BarcodePayment.MaxLengths.Price) {
 			result |= BarcodePayment.ValidationResult.PriceMaxLengthExceeded;
 		}
 	
-		if (!StringNotDefinedOrEmpty(paymentParams.Iznos) && (fieldLength == -1 || !paymentParams.Iznos.match(_pricePattern))) {
+		if (!StringNotDefinedOrEmpty(paymentParams.Iznos) && (fieldLength == -1 || paymentParams.Iznos.match(_pricePattern) == null)) {
 			result |= BarcodePayment.ValidationResult.PricePatternInvalid;
 		}
 		
 		// Payer name
-		fieldLength = GetLength(paymentParams.ImePlatitelja);
+		fieldLength = _me.GetLength(paymentParams.ImePlatitelja);
 		if (fieldLength > BarcodePayment.MaxLengths.PayerName) {
 			result |= BarcodePayment.ValidationResult.PayerNameMaxLengthExceeded;
 		}
@@ -97,7 +97,7 @@ BarcodePayment = new function() {
 		}
 		
 		// Payer address
-		fieldLength = GetLength(paymentParams.AdresaPlatitelja);
+		fieldLength = _me.GetLength(paymentParams.AdresaPlatitelja);
 		if (fieldLength > BarcodePayment.MaxLengths.PayerAddress) {
 			result |= BarcodePayment.ValidationResult.PayerAddressMaxLengthExceeded;
 		}
@@ -107,7 +107,7 @@ BarcodePayment = new function() {
 		}
 		
 		// Payer HQ
-		fieldLength = GetLength(paymentParams.SjedistePlatitelja);
+		fieldLength = _me.GetLength(paymentParams.SjedistePlatitelja);
 		if (fieldLength > BarcodePayment.MaxLengths.PayerHQ) {
 			result |= BarcodePayment.ValidationResult.PayerHQMaxLengthExceeded;
 		}
@@ -117,7 +117,7 @@ BarcodePayment = new function() {
 		}
 		
 		// Receiver name
-		fieldLength = GetLength(paymentParams.Primatelj);
+		fieldLength = _me.GetLength(paymentParams.Primatelj);
 		if (fieldLength > BarcodePayment.MaxLengths.ReceiverName) {
 			result |= BarcodePayment.ValidationResult.ReceiverNameMaxLengthExceeded;
 		}
@@ -127,7 +127,7 @@ BarcodePayment = new function() {
 		}
 		
 		// Receiver address
-		fieldLength = GetLength(paymentParams.AdresaPrimatelja);
+		fieldLength = _me.GetLength(paymentParams.AdresaPrimatelja);
 		if (fieldLength > BarcodePayment.MaxLengths.ReceiverAddress) {
 			result |= BarcodePayment.ValidationResult.ReceiverAddressMaxLengthExceeded;
 		}
@@ -137,7 +137,7 @@ BarcodePayment = new function() {
 		}
 		
 		// Receiver HQ
-		fieldLength = GetLength(paymentParams.SjedistePrimatelja);
+		fieldLength = _me.GetLength(paymentParams.SjedistePrimatelja);
 		if (fieldLength > BarcodePayment.MaxLengths.ReceiverHQ) {
 			result |= BarcodePayment.ValidationResult.ReceiverHQMaxLengthExceeded;
 		}
@@ -147,7 +147,7 @@ BarcodePayment = new function() {
 		}
 		
 		// IBAN
-		fieldLength = GetLength(paymentParams.IBAN);
+		fieldLength = _me.GetLength(paymentParams.IBAN);
 		if (fieldLength > BarcodePayment.MaxLengths.IBAN) {
 			result |= BarcodePayment.ValidationResult.IBANMaxLengthExceeded;
 		}
@@ -156,12 +156,12 @@ BarcodePayment = new function() {
 			result |= BarcodePayment.ValidationResult.IBANInvalid;
 		}
 		
-		if (_settings.ValidateIBAN && !StringNotDefinedOrEmpty(paymentParams.IBAN) && IsIBANValid(paymentParams.IBAN)) {
+		if (_settings.ValidateIBAN && !StringNotDefinedOrEmpty(paymentParams.IBAN) && _me.IsIBANValid(paymentParams.IBAN)) {
 			result |= BarcodePayment.ValidationResult.IBANInvalid;
 		}
 		
 		// Payment model
-		fieldLength = GetLength(paymentParams.ModelPlacanja);
+		fieldLength = _me.GetLength(paymentParams.ModelPlacanja);
 		if (fieldLength > BarcodePayment.MaxLengths.PaymentModel) {
 			result |= BarcodePayment.ValidationResult.PaymentModelMaxLengthExceeded;
 		}
@@ -170,12 +170,12 @@ BarcodePayment = new function() {
 			result |= BarcodePayment.ValidationResult.PaymentModelInvalid;
 		}
 		
-		if (!StringNotDefinedOrEmpty(paymentParams.ModelPlacanja) && IsPaymentModelValid(paymentParams.ModelPlacanja)) {
+		if (!StringNotDefinedOrEmpty(paymentParams.ModelPlacanja) && _me.IsPaymentModelValid(paymentParams.ModelPlacanja)) {
 			result |= BarcodePayment.ValidationResult.PaymentModelInvalid;
 		}
 		
 		// Callout number
-		fieldLength = GetLength(paymentParams.PozivNaBroj);
+		fieldLength = _me.GetLength(paymentParams.PozivNaBroj);
 		if (fieldLength > BarcodePayment.MaxLengths.CalloutNumber) {
 			result |= BarcodePayment.ValidationResult.CalloutNumberMaxLengthExceeded;
 		}
@@ -189,7 +189,7 @@ BarcodePayment = new function() {
 		}
 		
 		// Intent code
-		fieldLength = GetLength(paymentParams.SifraNamjene);
+		fieldLength = _me.GetLength(paymentParams.SifraNamjene);
 		if (fieldLength > BarcodePayment.MaxLengths.IntentCode) {
 			result |= BarcodePayment.ValidationResult.IntentCodeMaxLengthExceeded;
 		}
@@ -203,7 +203,7 @@ BarcodePayment = new function() {
 		}
 		
 		// Description
-		fieldLength = GetLength(paymentParams.OpisPlacanja);
+		fieldLength = _me.GetLength(paymentParams.OpisPlacanja);
 		if (fieldLength > BarcodePayment.MaxLengths.Description) {
 			result |= BarcodePayment.ValidationResult.DescriptionMaxLengthExceeded;
 		}
