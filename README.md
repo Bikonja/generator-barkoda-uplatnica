@@ -10,6 +10,6 @@ Sve je potpuno besplatno i slobodno se koristi u komercijalne svrhe jer je pod l
 # Stvari koje još nisu implementirane
 * Validacija modela plaćanja (pri kraju)
 * Validacija šifre namjene (pri kraju)
-* Stranica za primjer korištenja (započeto)
+* Stranica za primjer korištenja (napravljen vrlo osnovni primjer, no potrebno je još dodati barem validacije, primjer se može vidjeti na adresi https://bikonja.github.io/generator-barkoda-uplatnica/)
 * Validacija poziva na broj u odnosu na označeni model plaćanja
 * Validacija IBAN-a
