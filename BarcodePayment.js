@@ -1,6 +1,6 @@
 /**
  * BarcodeGenerator - 2D Barcode generator for Croatian payment(LGPLv3)
- * version: 0.5
+ * version: 0.501
  */
 BarcodePayment = new function() {
 	var _me = this;
@@ -53,8 +53,16 @@ BarcodePayment = new function() {
 	}
 	
 	this.IsPaymentModelValid = function(paymentModel) {
-		// TODO: Implement payment model validation
-		return true;
+		var isValid = false;
+		
+		$.each(BarcodePayment.PaymentModels, function() { 
+			if (this.model == paymentModel) {
+				isValid = true;
+				return false; // Break out of each
+			}
+		});
+		
+		return isValid;
 	}
 	
 	this.IsCalloutNumberValid = function(calloutNumber, paymentModel) {
@@ -68,8 +76,16 @@ BarcodePayment = new function() {
 	}
 	
 	this.IsIntentCodeValid = function(intentCode) {
-		// TODO: Implement intent code validation
-		return true;
+		var isValid = false;
+		
+		$.each(BarcodePayment.IntentCodes, function() { 
+			if (this.code == intentCode) {
+				isValid = true;
+				return false; // Break out of each
+			}
+		});
+		
+		return isValid;
 	}
 	
 	this.ValidatePaymentParams = function(paymentParams) {
