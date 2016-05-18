@@ -184,7 +184,7 @@ BarcodePayment = new function() {
 			result |= BarcodePayment.ValidationResult.CalloutNumberInvalid;
 		}
 		
-		if (!StringNotDefinedOrEmpty(paymentParams.PozivNaBroj) && IsCalloutNumberValid(paymentParams.PozivNaBroj, paymentParams.ModelPlacanja)) {
+		if (!StringNotDefinedOrEmpty(paymentParams.PozivNaBroj) && _me.IsCalloutNumberValid(paymentParams.PozivNaBroj, paymentParams.ModelPlacanja)) {
 			result |= BarcodePayment.ValidationResult.CalloutNumberInvalid;
 		}
 		
@@ -198,7 +198,7 @@ BarcodePayment = new function() {
 			result |= BarcodePayment.ValidationResult.IntentCodeInvalid;
 		}
 		
-		if (!StringNotDefinedOrEmpty(paymentParams.SifraNamjene) && IsIntentCodeValid(paymentParams.SifraNamjene)) {
+		if (!StringNotDefinedOrEmpty(paymentParams.SifraNamjene) && _me.IsIntentCodeValid(paymentParams.SifraNamjene)) {
 			result |= BarcodePayment.ValidationResult.IntentCodeInvalid;
 		}
 		
