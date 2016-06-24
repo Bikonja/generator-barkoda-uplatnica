@@ -90,6 +90,7 @@
 		if (textToEncode == BarcodePayment.ResultCode.InvalidContent) {
 			HandleValidation(paymentParams);
 			generateBarcode = false;
+			alert('Sadržaj forme nije ispravan za generiranja barkoda');
 		} else if (textToEncode == BarcodePayment.ResultCode.InvalidObject || StringNotDefinedOrEmpty(textToEncode)) {
 			alert('Došlo je do greške kod generiranja barkoda');
 			generateBarcode = false;
