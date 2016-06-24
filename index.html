@@ -78,6 +78,10 @@
 		// TODO: result is BarcodePayment.ValidationResult, check which validations failed and display appropriate messages
 	}
 	
+	var StringNotDefinedOrEmpty = function(str) {
+		return str == undefined || str == null || str.length == 0;
+	}
+	
 	function GenerirajBarkod() {
 		var generateBarcode = true;
 		var paymentParams = GetPaymentParams();
@@ -86,7 +90,7 @@
 		if (textToEncode == BarcodePayment.ResultCode.InvalidContent) {
 			HandleValidation(paymentParams);
 			generateBarcode = false;
-		} else if (textToEncode == BarcodePayment.ResultCode.InvalidObject) {
+		} else if (textToEncode == BarcodePayment.ResultCode.InvalidObject || StringNotDefinedOrEmpty(textToEncode)) {
 			alert('Došlo je do greške kod generiranja barkoda');
 			generateBarcode = false;
 		} 
