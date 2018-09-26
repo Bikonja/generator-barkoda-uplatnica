@@ -464,6 +464,7 @@ BarcodePayment = new function() {
 	// TODO: Add validation rules for every payment model
 	// Source: FINA website - http://www.fina.hr/fgs.axd?id=16090&usg=AFQjCNF8XEhnL9POBo5CccBjCWW9gzBJJg&sig2=b5VcZvu4wgv185jhJR-U_w&cad=rja
 	this.PaymentModels = [
+		{ model: "00" },
 		{ model: "01" },
 		{ model: "02" },
 		{ model: "03" },
