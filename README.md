@@ -17,3 +17,4 @@ Za primjer korištenja možete otvoriti stranicu https://bikonja.github.io/gener
 * Na stranici za primjer korištenja nije implementirano ispisivanje poruke o kakvoj se grešci radi (validacija)
 * Na stranici za primjer korištenja nije implementirano dinamičko postavljanje maksimalne duljine polja
 * Validacija poziva na broj u odnosu na označeni model plaćanja
+* Validacija IBAN-a (osim kod pokretanja unutar Node.js-a)
