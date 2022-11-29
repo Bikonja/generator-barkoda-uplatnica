@@ -2,7 +2,7 @@
  * BarcodeGenerator - 2D Barcode generator for Croatian payment(LGPLv3)
  * version: 0.502
  */
-const validateIBAN = require('./ibanValidation');
+const validateIBAN = typeof window === 'undefined' ? require('./ibanValidation') : function(iban) { return true; };
 
 BarcodePayment = new function() {
 	var _me = this;
