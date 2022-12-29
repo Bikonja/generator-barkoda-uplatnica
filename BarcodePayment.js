@@ -17,7 +17,7 @@ BarcodePayment = new function() {
 	
 	var _delimiter = String.fromCharCode(0x0A);
 	var _header = "HRVHUB30";
-	var _currency = "HRK"
+	var _currency = "EUR"
 	var _paymentModelPrefix = "HR";
 	
 	// Private variables
