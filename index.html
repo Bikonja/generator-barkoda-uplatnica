@@ -32,6 +32,28 @@
 		$.each(BarcodePayment.PaymentModels, function() {
 			modelPlacanjaDropdown.append($("<option />").val(this.model).text(this.model));
 		});
+
+		const fields = [
+	        	"iznos",
+	        	"brRacuna",
+	        	"modelPlacanja",
+	        	"pozivNaBroj",
+	        	"opisPlacanja",
+	        	"sifraNamjene",
+	        	"imePlatitelja",
+	        	"adresaPlatitelja",
+	        	"postanskiBrojIMjestoPlatitelja",
+	        	"primatelj",
+	        	"adresaPrimatelja",
+	        	"postanskiBrojIMjestoPrimatelja",
+	        ];
+		
+	        const query = new URLSearchParams(window.location.search);
+	        fields.forEach((field) => {
+	        	if (query.has(field)) {
+	        		document.getElementById(field).value = query.get(field);
+	        	}
+	        });
 		
 		// TODO: Add sample code for dynamic setting of maxlength properties on elements
 	});
